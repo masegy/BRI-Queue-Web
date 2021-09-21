@@ -4,7 +4,7 @@ import IconText from "parts/IconText";
 
 export default function Footer() {
   return (
-    <footer>
+    <footer className="spacing-sm">
       <div className="container">
         <div className="row">
           <div className="col-auto" style={{width: 350}}>
@@ -33,7 +33,7 @@ export default function Footer() {
               </li>
             </ul>
           </div>
-          <div className="col-2 mr-5">
+          <div className="col-3 mr-5">
             <h6 className="mt-2">Kantor BRI Pusat</h6>
             <ul className="list-group list-group-flush">
               <li className="list-group-item">
@@ -46,7 +46,7 @@ export default function Footer() {
               </li>
             </ul>
           </div>
-          <div className="col-3">
+          <div className="col-2">
             <h6 className="mt-2">Hubungi Kami</h6>
             <ul className="list-group list-group-flush">
               <li className="list-group-item">
@@ -60,7 +60,7 @@ export default function Footer() {
               </li>
               <li className="list-group-item">
                 <Button isExternal type="link" href="tel:14017">
-                  14017 / 1500017
+                  14017/1500017
                 </Button>
               </li>
             </ul>
