@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import Header from 'parts/Header';
-import BookingDetail from 'parts/BookingDetail';
+import BankFormDetail from 'parts/BankFormDetail'
 import Footer from 'parts/Footer';
 
-export default class BookingPage extends Component {
+export default class DaftarBank extends Component {
     componentDidMount(){
         window.title = "BRIQueue | Beranda";
         window.scrollTo(0, 0);
@@ -12,7 +12,7 @@ export default class BookingPage extends Component {
         return (
             <>
                 <Header {...this.props}></Header>
-                <BookingDetail />
+                <BankFormDetail />
                 <Footer />
             </>
         )

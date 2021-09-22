@@ -17,18 +17,18 @@ export default function Footer() {
             <h6 className="mt-2">Tautan</h6>
             <ul className="list-group list-group-flush">
               <li className="list-group-item">
-                <Button type="link" href="/register">
+                <Button type="link" href="/daftar-bank">
                   Daftar Bank
                 </Button>
               </li>
               <li className="list-group-item">
-                <Button type="link" href="/book-nomor-antrian">
+                <Button type="link" href="/booking-antrian">
                   Booking Antrian
                 </Button>
               </li>
               <li className="list-group-item">
                 <Button type="link" href="/">
-                  info-antrian
+                  Info Antrian
                 </Button>
               </li>
             </ul>

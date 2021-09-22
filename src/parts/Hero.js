@@ -2,6 +2,7 @@ import React from "react";
 import ImageHero from "assets/images/image-beranda.png";
 import Button from "elements/Button";
 import Fade from "react-reveal/Fade";
+import { Link } from "react-router-dom";
 
 export default function Hero(props) {
   return (
@@ -21,13 +22,11 @@ export default function Hero(props) {
               Ayo, Dapatkan kemudahan memperoleh pelayanan dengan melakukan
               booking nomor antrian melalui aplikasi minimal H-1.
             </p>
-            <Button
-              className="btn px-5"
-              hasShadow
-              isPrimary
-            >
-              Booking Antrian
-            </Button>
+            <Link to="/booking-antrian">
+              <Button className="btn px-5" hasShadow isPrimary>
+                Booking Antrian
+              </Button>
+            </Link>
           </div>
           <div className="col-6 pl-5">
             <div style={{ width: 540, height: 410 }}>
