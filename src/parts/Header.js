@@ -24,8 +24,8 @@ export default function Header(props) {
                     Beranda
                   </Button>
                 </li>
-                <li className={`nav-item${getNavLinkClass("/book-nomor-antrian")}`}>
-                  <Button className="nav-link" type="link" href="/book-nomor-antrian">
+                <li className={`nav-item${getNavLinkClass("/booking-antrian")}`}>
+                  <Button className="nav-link" type="link" href="/booking-antrian">
                     Book Nomor Antrian
                   </Button>
                 </li>
