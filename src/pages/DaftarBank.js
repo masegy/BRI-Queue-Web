@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Header from 'parts/Header';
 import BankFormDetail from 'parts/BankFormDetail'
 import Footer from 'parts/Footer';
+import BankDetails from 'json/bankDetails.json'
 
 export default class DaftarBank extends Component {
     componentDidMount(){
@@ -12,7 +13,7 @@ export default class DaftarBank extends Component {
         return (
             <>
                 <Header {...this.props}></Header>
-                <BankFormDetail />
+                <BankFormDetail data= {BankDetails} />
                 <Footer />
             </>
         )

@@ -1,7 +1,7 @@
 import React from "react";
 import Fade from "react-reveal/Fade";
 
-export default function BookingDetail() {
+export default function BookingDetail({ data }) {
   return (
     <section className="container spacing-sm">
       <Fade bottom>
@@ -10,8 +10,16 @@ export default function BookingDetail() {
           <span className="text-gray-400">Daftar bank yang tersedia</span>
         </div>
         <form className="form-inline mb-3">
-            <input className="form-control mr-sm-2" style ={{height:48.5}} type="search" placeholder="Search" aria-label="Search"/>
-            <button className="btn btn-outline-success my-sm-0" type="submit">Search</button>
+          <input
+            className="form-control mr-sm-2"
+            style={{ height: 48.5 }}
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+          />
+          <button className="btn btn-outline-success my-sm-0" type="submit">
+            Search
+          </button>
         </form>
         <div className="d-flex flex-column align-items-center">
           <table className="table table-striped">
@@ -24,24 +32,16 @@ export default function BookingDetail() {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-              </tr>
+              {data.bankDetails.map((item, index) => {
+                return (
+                  <tr key={`${index}`}>
+                    <th scope="row">{item._id}</th>
+                    <td>{item.bank}</td>
+                    <td>{item.alamat}</td>
+                    <td>{item.detail}</td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         </div>
