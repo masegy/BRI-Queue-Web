@@ -97,6 +97,19 @@ header{
 section{
     margin-bottom: 70px;
 }
+.auth{
+    background-image: url('../../assets/images/login-register-background.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: auto;
+    min-height: 100vh;
+    margin-bottom: -70px;
+    padding-top: 200px;
+    .card-shadow{
+        box-shadow: -8px 12px 18px 0 $gray-400;
+    }
+}
 
 footer{
     border-top: 1px solid $gray-200;

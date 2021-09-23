@@ -6,7 +6,7 @@ import BankDetails from 'json/bankDetails.json'
 
 export default class DaftarBank extends Component {
     componentDidMount(){
-        window.title = "BRIQueue | Beranda";
+        window.title = "BRIQueue | Daftar Bank";
         window.scrollTo(0, 0);
       }
     render() {

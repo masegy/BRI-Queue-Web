@@ -5,7 +5,7 @@ import Footer from 'parts/Footer';
 
 export default class BookingPage extends Component {
     componentDidMount(){
-        window.title = "BRIQueue | Beranda";
+        window.title = "BRIQueue | Booking Antrian";
         window.scrollTo(0, 0);
       }
     render() {
