@@ -5,6 +5,7 @@ import LandingPage from "pages/LandingPage";
 import BookingPage from "pages/BookingPage";
 import DaftarBank from "pages/DaftarBank";
 import LoginPage from "pages/LoginPage";
+import RegisterPage from "pages/RegisterPage";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/booking-antrian" component={BookingPage}></Route>
         <Route path="/daftar-bank" component={DaftarBank}></Route>
         <Route path="/login" component={LoginPage}></Route>
+        <Route path="/register" component={RegisterPage}></Route>
       </Router>
     </div>
   );
