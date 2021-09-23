@@ -32,7 +32,7 @@ export default function Hero(props) {
             <div style={{ width: 540, height: 410 }}>
               <img
                 src={ImageHero}
-                alt="Room with couches"
+                alt="hero icon"
                 className="img-fluid position-absolute"
                 style={{ margin: "-30px 0 0 -30px", zIndex: 1 }}
               />
