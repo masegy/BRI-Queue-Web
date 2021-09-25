@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Button from "elements/Button";
 import { Link } from "react-router-dom";
 import BrandIcon from "parts/IconText";
-import ParticleBackground from "parts/ParticleBackground";
+import ParticleBackground from "utils/ParticleBackground";
 
 export default class Registerpage extends Component {
   render() {

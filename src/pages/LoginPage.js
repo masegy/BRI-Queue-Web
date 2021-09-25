@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Button from "elements/Button";
 import { Link } from "react-router-dom";
 import BrandIcon from "parts/IconText";
-import ParticleBackground from "parts/ParticleBackground";
+import ParticleBackground from "utils/ParticleBackground";
 
 export default class LoginPage extends Component {
   render() {
@@ -40,7 +40,7 @@ export default class LoginPage extends Component {
                       </div>
                       <Link
                         className="d-flex justify-content-center card pb-3"
-                        to="/booking-antrian"
+                        to="/"
                       >
                         <Button
                           className="rounded"
