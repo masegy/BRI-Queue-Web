@@ -1,11 +1,11 @@
 import React from "react";
 import "./assets/scss/style.scss";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import LandingPage from "./pages/LandingPage";
-import BookingPage from "./pages/BookingPage";
-import DaftarBank from "./pages/DaftarBank";
-import LoginPage from "./pages/LoginPage";
-import RegisterPage from "./pages/RegisterPage";
+import LandingPage from "/pages/LandingPage";
+import BookingPage from "/pages/BookingPage";
+import DaftarBank from "/pages/DaftarBank";
+import LoginPage from "/pages/LoginPage";
+import RegisterPage from "/pages/RegisterPage";
 
 function App() {
   return (
