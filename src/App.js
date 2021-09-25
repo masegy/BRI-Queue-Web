@@ -6,6 +6,7 @@ import BookingPage from "pages/BookingPage";
 import DaftarBank from "pages/DaftarBank";
 import LoginPage from "pages/LoginPage";
 import RegisterPage from "pages/RegisterPage";
+import DetailBank from "pages/DetailBank";
 
 function App() {
   return (
@@ -16,6 +17,8 @@ function App() {
         <Route path="/daftar-bank" component={DaftarBank}></Route>
         <Route path="/login" component={LoginPage}></Route>
         <Route path="/register" component={RegisterPage}></Route>
+        <Route path="/detail-bank" component={DetailBank}></Route>
+
       </Router>
     </div>
   );

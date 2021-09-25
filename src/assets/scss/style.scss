@@ -118,6 +118,17 @@ section{
         box-shadow: -8px 12px 18px 0 $gray-400;
     }
 }
+.bank-details{
+    p{
+        padding-bottom: 24px;
+    }
+    @media screen and (max-width: 1204px) {
+        img{
+            display: none;
+        }
+      }
+}
+
 
 footer{
     border-top: 1px solid $gray-200;

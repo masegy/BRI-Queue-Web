@@ -34,7 +34,7 @@ export default function Hero(props) {
                 src={ImageHero}
                 alt="hero icon"
                 className="img-fluid position-absolute"
-                style={{ margin: "-30px 0 0 -30px", zIndex: 1 }}
+                style={{ margin: "-30px 0 0 -30px"}}
               />
             </div>
           </div>
