@@ -1,7 +1,21 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import Fade from "react-reveal/Fade";
 
-export default function BookingDetail({ data }) {
+export default function BookingDetail() {
+  const [data, setData] = useState([])
+
+  useEffect(() => {
+    axios.get('http://localhost:5000/data')
+    .then(res =>{
+      console.log(res)
+      setData(res.data)
+    })
+    .catch(err =>{
+      console.log(err)
+    })
+  }, [])
+  
   return (
     <section className="container spacing-sm">
       <Fade bottom>
@@ -28,17 +42,15 @@ export default function BookingDetail({ data }) {
                 <th scope="col">id</th>
                 <th scope="col">Bank</th>
                 <th scope="col">Alamat</th>
-                <th scope="col">Detail</th>
               </tr>
             </thead>
             <tbody>
-              {data.bankDetails.map((item, index) => {
+              {data.map((item, index) => {
                 return (
                   <tr key={`${index}`}>
-                    <th scope="row">{item._id}</th>
-                    <td>{item.bank}</td>
+                    <th scope="row">{item.id_bank}</th>
+                    <td>{item.nama_bank}</td>
                     <td>{item.alamat}</td>
-                    <td>{item.detail}</td>
                   </tr>
                 );
               })}
