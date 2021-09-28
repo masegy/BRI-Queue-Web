@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
 import Header from 'parts/Header';
-import BankFormDetail from 'parts/BankFormDetail'
 import Footer from 'parts/Footer';
-import BankDetails from 'json/bankDetails.json'
+import BankDetails from 'parts/BankDetails';
 
-export default class DaftarBank extends Component {
+export default class DetailBank extends Component {
     componentDidMount(){
         window.title = "BRIQueue | Daftar Bank";
         window.scrollTo(0, 0);
@@ -13,10 +12,9 @@ export default class DaftarBank extends Component {
         return (
             <>
                 <Header {...this.props}></Header>
-                <BankFormDetail data= {BankDetails} />
+                <BankDetails />
                 <Footer />
             </>
         )
     }
 }
-
