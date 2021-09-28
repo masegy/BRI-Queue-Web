@@ -2,7 +2,7 @@ import React from "react";
 import Button from "elements/Button";
 import BrandIcon from "parts/IconText";
 import Fade from "react-reveal/Fade";
-import { Link } from "react-router-dom";
+
 
 export default function Header(props) {
   const getNavLinkClass = (path) => {
@@ -53,11 +53,9 @@ export default function Header(props) {
                   </Button>
                 </li>
                 <li className={`nav-item`}>
-                  <Link to="/Login">
                     <Button className="btn ml-2" hasShadow isPrimary>
                       Sign Out
                     </Button>
-                  </Link>
                 </li>
               </ul>
             </div>

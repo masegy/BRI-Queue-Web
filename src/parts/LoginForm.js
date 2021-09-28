@@ -1,10 +1,71 @@
 import React, { useState } from "react";
 import Button from "elements/Button";
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import BrandIcon from "parts/IconText";
+import axios from "axios";
 
-export default function LoginForm() {
+export default function LoginForm({ setLogoutUser }) {
   const [hasAcccount, setHasAcccount] = useState(false);
+
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [error, setError] = useState("");
+  let history = useHistory();
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    axios
+      .post("http://localhost:5000/api/auth/login", {
+        username,
+        password,
+      })
+      .then((response) => {
+        console.log("response", response);
+        localStorage.setItem(
+          "login",
+          JSON.stringify({
+            userLogin: true,
+            token: response.data.access_token,
+          })
+        );
+        setError("");
+        setUsername("");
+        setPassword("");
+        setLogoutUser(false);
+        history.push("/");
+      })
+      .catch((error) => setError(error.response.data.message));
+  };
+  const onRegister = (e) => {
+    if (username.length > 0 && password.length > 4) {
+      if (password !== confirmPassword) {
+        alert("password did not match");
+        return;
+      }
+      e.preventDefault();
+      axios
+        .post("http://localhost:5000/api/auth/register", {
+          username,
+          password,
+        })
+        .then((response) => {
+          console.log("response", response);
+          localStorage.setItem(
+            "login",
+            JSON.stringify({
+              userLogin: true,
+              token: response.data.access_token,
+            })
+          );
+          setError("");
+          setUsername("");
+          setPassword("");
+          setLogoutUser(false);
+        })
+        .catch((error) => setError(error.response.data.message));
+    }
+  };
 
   return (
     <section className="auth">
@@ -18,15 +79,15 @@ export default function LoginForm() {
                 </div>
                 {hasAcccount ? (
                   <>
-                    <form>
+                    <form onSubmit={onRegister}>
                       <div className="form-group">
                         <label>Email address</label>
                         <input
                           type="email"
                           className="form-control"
-                          id="exampleInputEmail1"
                           aria-describedby="emailHelp"
                           placeholder="Enter email"
+                          onChange={(e) => setUsername(e.target.value)}
                         />
                       </div>
                       <div className="form-group">
@@ -34,8 +95,8 @@ export default function LoginForm() {
                         <input
                           type="password"
                           className="form-control"
-                          id="exampleInputPassword1"
                           placeholder="Password"
+                          onChange={(e) => setPassword(e.target.value)}
                         />
                       </div>
                       <div className="form-group pb-4">
@@ -45,22 +106,24 @@ export default function LoginForm() {
                           className="form-control"
                           id="exampleInputPassword1"
                           placeholder="Confrim Password"
+                          onChange={(e) => setConfirmPassword(e.target.value)}
                         />
                       </div>
-                      <Link
-                        className="d-flex justify-content-center card pb-3"
+                      {/* <Link
+                        className=""
                         to="/"
+                      > */}
+                      <div className="d-flex justify-content-center card pb-3"></div>
+                      <Button
+                        style={{ cursor: "pointer" }}
+                        className="rounded"
+                        type="btn px-5"
+                        hasShadow
+                        isPrimary
                       >
-                        <Button
-                          style={{ cursor: "pointer" }}
-                          className="rounded"
-                          type="btn px-5"
-                          hasShadow
-                          isPrimary
-                        >
-                          Register
-                        </Button>
-                      </Link>
+                        Register
+                      </Button>
+                      {/* </Link> */}
                       <p className="akun">
                         Belum mempunyai akun ?{" "}
                         <span
@@ -75,7 +138,12 @@ export default function LoginForm() {
                   </>
                 ) : (
                   <>
-                    <form>
+                    {error && (
+                      <div className="alert alert-danger" role="alert">
+                        {error}
+                      </div>
+                    )}
+                    <form onSubmit={handleLogin}>
                       <div className="form-group">
                         <label>Email address</label>
                         <input
@@ -84,6 +152,7 @@ export default function LoginForm() {
                           id="exampleInputEmail1"
                           aria-describedby="emailHelp"
                           placeholder="Enter email"
+                          onChange={(e) => setUsername(e.target.value)}
                         />
                       </div>
                       <div className="form-group pb-4">
@@ -93,12 +162,14 @@ export default function LoginForm() {
                           className="form-control"
                           id="exampleInputPassword1"
                           placeholder="Password"
+                          onChange={(e) => setPassword(e.target.value)}
                         />
                       </div>
-                      <Link
+                      {/* <Link
                         className="d-flex justify-content-center card pb-3"
                         to="/"
-                      >
+                      > */}
+                      <div className="d-flex justify-content-center card pb-3">
                         <Button
                           style={{ cursor: "pointer" }}
                           className="rounded"
@@ -108,7 +179,8 @@ export default function LoginForm() {
                         >
                           Login
                         </Button>
-                      </Link>
+                      </div>
+                      {/* </Link> */}
                       <p className="akun">
                         Belum mempunyai akun ?{" "}
                         <span
