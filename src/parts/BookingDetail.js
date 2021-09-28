@@ -56,8 +56,9 @@ export default class BookingDetail extends Component {
               <div className="input-group mb-3">
                 <select className="custom-select" id="inputGroupSelect02">
                   <option selected>Pilih...</option>
-                  <option value="1">Costumer Service</option>
-                  <option value="2">Teller</option>
+                  <option value="1">Pendaftaran</option>
+                  <option value="2">Transaksi</option>
+                  <option value="2">Pinjaman</option>
                 </select>
               </div>
             </div>
