@@ -8,17 +8,21 @@ export default class BookingDetail extends Component {
   state = {
     currentTime: ``,
     kcpName: [],
-
+    pelayanan: [],
   };
 
   componentDidMount() {
     this.getCurrentTime();
     //   setInterval(()=> this.getCurrentTime(), 1000)
     //membuat HTTP GET Request
-    axios.get(`http://localhost:5000/data`).then(res => {
-      console.log(res);    
-      this.setState({kcpName: res.data});
-      })
+    axios.get(`http://localhost:5000/data`).then((res) => {
+      console.log(res);
+      this.setState({ kcpName: res.data });
+    });
+    axios.get(`http://localhost:5000/pelayanan`).then((res) => {
+      console.log(res);
+      this.setState({ pelayanan: res.data });
+    });
   }
   componentWillUnmount() {
     clearInterval(this.getCurrentTime);
@@ -50,7 +54,9 @@ export default class BookingDetail extends Component {
               </p>
               <div className="input-group mb-3">
                 <select className="custom-select" id="inputGroupSelect02">
-                {this.state.kcpName.map(kcp => <option key={kcp.id}>{kcp.nama_bank}</option>)}
+                  {this.state.kcpName.map((kcp) => (
+                    <option key={kcp.id}>{kcp.nama_bank}</option>
+                  ))}
                   {/* <option selected>Pilih...</option>
                   <option value="1">One</option>
                   <option value="2">Two</option>
@@ -64,11 +70,9 @@ export default class BookingDetail extends Component {
               </p>
               <div className="input-group mb-3">
                 <select className="custom-select" id="inputGroupSelect02">
-                    
-                    
-                  <option selected>Pilih...</option>
-                  <option value="1">Costumer Service</option>
-                  <option value="2">Teller</option>
+                  {this.state.pelayanan.map((item) => (
+                    <option key={item.id}>{item.jenis_pelayanan}</option>
+                  ))}
                 </select>
               </div>
             </div>

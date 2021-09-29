@@ -16,5 +16,15 @@
             "alamat": "Jl.Surabaya No.182"
         }
 
+    ],
+    "pelayanan":[
+        {
+            "id_pelayanan":1,
+            "jenis_pelayanan": "teller"
+        },
+        {
+            "id_pelayanan":2,
+            "jenis_pelayanan": "Costumer Service"
+        }
     ]
 }
