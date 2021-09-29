@@ -3,19 +3,41 @@ import React, { useEffect, useState } from "react";
 import Fade from "react-reveal/Fade";
 
 export default function BookingDetail() {
-  const [data, setData] = useState([])
-
+  const [data, setData] = useState([]);
+  const [searchInput, setSearchInput] = useState("");
+  const [filteredResults, setFilteredResults] = useState([]);
+  const [searchButton, setSearchButton] = useState(false);
   useEffect(() => {
-    axios.get('http://localhost:5000/data')
-    .then(res =>{
-      console.log(res)
-      setData(res.data)
-    })
-    .catch(err =>{
-      console.log(err)
-    })
-  }, [])
-  
+    axios
+      .get("http://localhost:5000/data")
+      .then((res) => {
+        console.log(res);
+        setData(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
+  const searchItems = (searchValue) => {
+    setSearchInput(searchValue);
+    if (searchInput !== "") {
+      const filteredData = data.filter((item) => {
+        return Object.values(item)
+          .join("")
+          .toLowerCase()
+          .includes(searchInput.toLowerCase());
+      });
+      setFilteredResults(filteredData);
+    } else {
+      setFilteredResults(data);
+    }
+  };
+
+  const onClickHandler = () => {
+    setSearchButton(!searchButton);
+  };
+
   return (
     <section className="container spacing-sm">
       <Fade bottom>
@@ -27,11 +49,14 @@ export default function BookingDetail() {
           <input
             className="form-control mr-sm-2"
             style={{ height: 48.5 }}
-            type="search"
+            type="text"
             placeholder="Search"
-            aria-label="Search"
+            onChange={(e) => searchItems(e.target.value)}
           />
-          <button className="btn btn-outline-success my-sm-0" type="submit">
+          <button
+            className="btn btn-outline-success my-sm-0"
+            onClick={onClickHandler}
+          >
             Search
           </button>
         </form>
@@ -45,15 +70,25 @@ export default function BookingDetail() {
               </tr>
             </thead>
             <tbody>
-              {data.map((item, index) => {
-                return (
-                  <tr key={`${index}`}>
-                    <th scope="row">{item.id_bank}</th>
-                    <td>{item.nama_bank}</td>
-                    <td>{item.alamat}</td>
-                  </tr>
-                );
-              })}
+              {searchInput.length > 1 && !searchButton
+                ? filteredResults.map((item) => {
+                    return (
+                      <tr>
+                        <th scope="row">{item.id_bank}</th>
+                        <td>{item.nama_bank}</td>
+                        <td>{item.alamat}</td>
+                      </tr>
+                    );
+                  })
+                : data.map((item) => {
+                    return (
+                      <tr>
+                        <th scope="row">{item.id_bank}</th>
+                        <td>{item.nama_bank}</td>
+                        <td>{item.alamat}</td>
+                      </tr>
+                    );
+                  })}
             </tbody>
           </table>
         </div>
