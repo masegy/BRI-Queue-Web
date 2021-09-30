@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import axios from "axios";
 import Fade from "react-reveal/Fade";
 import Button from "elements/Button";
 import moment from "moment";
@@ -6,11 +7,18 @@ import moment from "moment";
 export default class BookingDetail extends Component {
   state = {
     currentTime: ``,
+    kcpName: [],
+
   };
 
   componentDidMount() {
     this.getCurrentTime();
     //   setInterval(()=> this.getCurrentTime(), 1000)
+    //membuat HTTP GET Request
+    axios.get(`http://localhost:5000/data`).then(res => {
+      console.log(res);    
+      this.setState({kcpName: res.data});
+      })
   }
   componentWillUnmount() {
     clearInterval(this.getCurrentTime);
@@ -42,10 +50,11 @@ export default class BookingDetail extends Component {
               </p>
               <div className="input-group mb-3">
                 <select className="custom-select" id="inputGroupSelect02">
-                  <option selected>Pilih...</option>
+                {this.state.kcpName.map(kcp => <option key={kcp.id}>{kcp.nama_bank}</option>)}
+                  {/* <option selected>Pilih...</option>
                   <option value="1">One</option>
                   <option value="2">Two</option>
-                  <option value="3">Three</option>
+                  <option value="3">Three</option> */}
                 </select>
               </div>
             </div>
@@ -55,6 +64,8 @@ export default class BookingDetail extends Component {
               </p>
               <div className="input-group mb-3">
                 <select className="custom-select" id="inputGroupSelect02">
+                    
+                    
                   <option selected>Pilih...</option>
                   <option value="1">Costumer Service</option>
                   <option value="2">Teller</option>

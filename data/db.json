@@ -9,6 +9,12 @@
             "id_bank": 2,
             "nama_bank": "BANK KCP Banjaran",
             "alamat": "Jl.Banjaran No.181"
+        },
+        {
+            "id_bank": 3,
+            "nama_bank": "BANK KCP Surabaya",
+            "alamat": "Jl.Surabaya No.182"
         }
+
     ]
 }
