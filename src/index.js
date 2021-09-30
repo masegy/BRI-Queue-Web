@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import * as serviceWorkerRegistration from './serviceWorkerRegistration'
 
 ReactDOM.render(
   <React.StrictMode>
@@ -10,6 +11,11 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root')
 );
+
+//menambahkan pwa feature
+serviceWorkerRegistration.register();
+
+//link untuk melihat apakah fitur pwa sudah ditambahkan "http://localhost:5000" atau "http://192.168.43.149:5000"
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
