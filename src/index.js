@@ -15,7 +15,7 @@ ReactDOM.render(
 //menambahkan pwa feature
 serviceWorkerRegistration.register();
 
-//link untuk melihat apakah fitur pwa sudah ditambahkan "http://localhost:5000" atau "http://192.168.43.149:5000"
+//link untuk melihat apakah fitur pwa sudah ditambahkan ketik "npx serve -s build" lalu ikuti link yang di tampilkan
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
