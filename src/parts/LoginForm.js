@@ -1,10 +1,39 @@
 import React, { useState } from "react";
 import Button from "elements/Button";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import BrandIcon from "parts/IconText";
+// import axios from "axios";
 
 export default function LoginForm() {
   const [hasAcccount, setHasAcccount] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const history = useHistory();
+
+  const signHandler = async (e) => {
+    e.preventDefault();
+    const user = { email, password };
+
+    fetch("http://localhost:5000/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(user),
+    }).then(() => {
+      history.go(!hasAcccount);
+    });
+    // try {
+    //   axios.post(`http://localhost:5000/login`, {
+    //     email: email,
+    //     password: password,
+    //   })
+    //   .then(res => {
+    //     console.log(res);
+    //     console.log(res.data)
+    //   })
+    // } catch (err) {
+    //   console.log(err);
+    // }
+  };
 
   return (
     <section className="auth">
@@ -18,7 +47,7 @@ export default function LoginForm() {
                 </div>
                 {hasAcccount ? (
                   <>
-                    <form>
+                    <form onSubmit={signHandler}>
                       <div className="form-group">
                         <label>Email address</label>
                         <input
@@ -27,6 +56,7 @@ export default function LoginForm() {
                           id="exampleInputEmail1"
                           aria-describedby="emailHelp"
                           placeholder="Enter email"
+                          onChange={(e) => setEmail(e.target.value)}
                         />
                       </div>
                       <div className="form-group">
@@ -36,9 +66,10 @@ export default function LoginForm() {
                           className="form-control"
                           id="exampleInputPassword1"
                           placeholder="Password"
+                          onChange={(e) => setPassword(e.target.value)}
                         />
                       </div>
-                      <div className="form-group pb-4">
+                      {/* <div className="form-group pb-4">
                         <label>Confirm Password</label>
                         <input
                           type="password"
@@ -46,21 +77,23 @@ export default function LoginForm() {
                           id="exampleInputPassword1"
                           placeholder="Confrim Password"
                         />
-                      </div>
-                      <Link
+                      </div> */}
+                      {/* <Link
                         className="d-flex justify-content-center card pb-3"
                         to="/"
-                      >
+                      > */}
+                      <div className="d-flex justify-content-center card pb-3">
                         <Button
                           style={{ cursor: "pointer" }}
-                          className="rounded"
+                          className="rounded "
                           type="btn px-5"
                           hasShadow
                           isPrimary
                         >
                           Register
                         </Button>
-                      </Link>
+                      </div>
+                      {/* </Link> */}
                       <p className="akun">
                         Belum mempunyai akun ?{" "}
                         <span
