@@ -6,7 +6,6 @@ export default function BookingDetail() {
   const [data, setData] = useState([]);
   const [searchInput, setSearchInput] = useState("");
   const [filteredResults, setFilteredResults] = useState([]);
-  const [searchButton, setSearchButton] = useState(false);
   useEffect(() => {
     axios
       .get("http://localhost:5000/data")
@@ -34,10 +33,6 @@ export default function BookingDetail() {
     }
   };
 
-  const onClickHandler = () => {
-    setSearchButton(!searchButton);
-  };
-
   return (
     <section className="container spacing-sm">
       <Fade bottom>
@@ -55,7 +50,6 @@ export default function BookingDetail() {
           />
           <button
             className="btn btn-outline-success my-sm-0"
-            onClick={onClickHandler}
           >
             Search
           </button>
@@ -70,7 +64,7 @@ export default function BookingDetail() {
               </tr>
             </thead>
             <tbody>
-              {searchInput.length > 1 && !searchButton
+              {searchInput.length > 1
                 ? filteredResults.map((item) => {
                     return (
                       <tr>
